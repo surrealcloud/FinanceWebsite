@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block title %}Register{% endblock %} <!-- replaces the placeholder in base template -->
+
+<!-- Title-->
+{% block page %}
+
+<h1 class="titlebox">Register</h1>
+
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+
+<form method='post'>
+    <input type="text" id="username" name="username" placeholder="Enter username">
+    <input type="password" id="password" name="password" placeholder="Enter password">
+    <button type="submit">register</button>
+</form>
+
+<h3> {{exists}}</h3>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block title %}Budget{% endblock %} <!-- replaces the placeholder in base template -->
+
+<!-- Title-->
+{% block page %}
+
+<h1 class="titlebox">{{user.username}}'s Budget</h1>
+
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+
+<div class="content" style="width: 15%">
+    <form method='POST'>
+        <div>
+            <input type="text" name="itemname" id="itemname" min="1" maxlength="100" required placeholder="Name of Item">
+            <select name="itemtype" id="itemtype">
+                <option value="Expense">Expense</option>
+                <option value="Income">Income</option>
+            </select>
+            <input type="number" name="itemvalue" id="itemvalue" min="0" required placeholder="Item Value">
+            <button type="submit">Add Item</button>
+        </div>
+        <div>
+            <textarea name="itemdesc" id="itemdesc" maxlength="1000" placeholder="Item Description"></textarea>
+        </div>
+
+    </form>
+</div>
+
+<div class="content" style="width: 85%">
+    <table style="width: 100%">
+        <tr>
+            <th>Item</th>
+            <th>Expense/Income</th>
+            <th>Value</th>
+            <th>Action</th>
+        </tr>
+        {% for item in user.budgetitem %}
+            <tr>
+                <td>{{item.itemname}}</td>
+                <td>{{item.itemtype}}</td>
+                <td>{{item.itemvalue}}</td>
+                <td><button type="button" onClick="deleteItem({{ item.id }})">Remove</button></td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td></td>
+            <td></td>
+            <th>Total: {{budgetsum}}</th>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock %}

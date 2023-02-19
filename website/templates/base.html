@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link
+          rel="stylesheet"
+          href="../static/main.css"
+        />
+    
+        <title>{% block title %}lol{% endblock %}</title> <!-- denotes a placeholder for title-->
+    </head> 
+    <body>
+        <div class="title"> 
+            {% block page %} {% endblock %}
+        </div>
+
+        <div class="navbar">
+            <a class="content" href="/">home</a>
+            <a class="content" href="/budget">budget</a>
+            <a class="content" href="/register">register</a>
+            <a class="content" href="/login">login</a>
+            <a class="content" href="/logout">logout</a>
+        </div>
+
+        <div class="content-container">
+            {% block content %}
+            {% endblock%}
+        </div>
+        
+        {% block javascript %}
+        {% endblock %}
+    </body>
+</html>

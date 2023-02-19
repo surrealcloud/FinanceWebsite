@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %} <!-- replaces the placeholder in base template -->
+
+<!-- Title-->
+{% block page %}
+
+<h1 class="titlebox">Oogie Boogie Finance</h1>
+
+{% endblock %}
+
+<!-- Content -->
+{% block content %}
+
+
+<!-- Interest Calculator -->
+<div class="content">
+    <h1>Interest</h1>
+    <div style="display: flex; flex-direction: column;">
+        <form method="post">
+            <input type="number" id="startingamount" name="startingamount" min="0" placeholder="Starting $$$">
+            <input type="number" id="interestrate" name="interestrate" placeholder="Interest Rate">
+            <input type="number" id="period" name="period" min="0" placeholder="Interest Periods in a Year">
+            <input type="number" id="elapsedtime" name="elapsedtime" min="0" placeholder="Time (in Days)">
+            <button type="submit">Calculate</button>
+        </form>
+        <h2>{{endamount}}</h2>
+    </div>
+</div>
+
+<!-- Currency Conversion -->
+<div class="content">
+    <h1>Currency Exchange</h1>
+    <div>
+        <form method="POST">
+            
+            <input type="number" id="baseamount" name="baseamount" min="0" placeholder="How much $$$">
+
+            <label>From: </label>
+            <select id="fromcurrency" name="fromcurrency">
+                {% for countries in countries %}
+                    <option value="{{countries}}">{{countries}}</option>
+                {% endfor %}
+            </select>
+            
+            <label>To: </label>
+            <select id="tocurrency" name="tocurrency">
+                {% for countries in countries %}
+                    <option value="{{countries}}">{{countries}}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Convert</button>
+
+            
+
+        </form>
+
+        <h2>{{baseamount}} {{fromcurrency}} = {{convertedPrice}} {{tocurrency}}</h2>
+
+    </div>
+</div>
+
+{% endblock %}
